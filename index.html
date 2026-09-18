@@ -1,131 +1,764 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 
-  <h1>🎴 Arian Quiz Night</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- قوانین همیشه قبل از ورود قابل دیدن هستند -->
-  <div class="rules-section">
+  <title>Arian's Birthday Quiz 🎂</title>
 
-    <button id="rulesBtn" class="rules-btn">
-      📜 قوانین بازی
-    </button>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    <div id="rulesBox" class="rules-box">
-      <h2>قوانین بازی</h2>
+    html {
+      scroll-behavior: smooth;
+    }
 
-      <ol>
-        <li>
-          ابتدا دخترها و پسرها جدا می‌شوند و دو نفره مسابقه‌های کوتاه
-          بخش «🎲 تیم‌کشی» را انجام می‌دهند.
-        </li>
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #24344f 0%, #0d1524 45%, #05080e 100%);
+      color: white;
+    }
 
-        <li>
-          برنده زودتر کارت تیم‌بندی را برمی‌دارد.
-          بعد از اینکه همه کارت گرفتند، تیم‌ها مشخص می‌شوند.
-        </li>
+    button {
+      font-family: inherit;
+    }
 
-        <li>
-          اعضای هر تیم بر اساس عدد یا رتبه کارت خودشان در صف قرار می‌گیرند.
-        </li>
+    /* =========================
+       INTRO / RULES PAGE
+    ========================= */
 
-        <li>
-          نفر اول هر تیم با حریف خود سنگ، کاغذ، قیچی بازی می‌کند.
-        </li>
+    #introPage {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 211, 105, .13), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(255, 118, 160, .12), transparent 28%),
+        linear-gradient(180deg, #10192a, #070b13);
+    }
 
-        <li>
-          برنده سنگ، کاغذ، قیچی دسته‌بندی سؤال را انتخاب می‌کند.
-        </li>
+    .birthday-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 55px 20px 40px;
+      text-align: center;
+    }
 
-        <li>
-          یک سؤال یا چالش از همان دسته به‌صورت رندم نمایش داده می‌شود.
-        </li>
+    .confetti {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .5;
 
-        <li>
-          با کلیک روی کارت، جواب نمایش داده می‌شود.
-          سؤال فقط با زدن Next عوض می‌شود.
-        </li>
+      background-image:
+        radial-gradient(circle, #ffd166 2px, transparent 3px),
+        radial-gradient(circle, #ef476f 2px, transparent 3px),
+        radial-gradient(circle, #4cc9f0 2px, transparent 3px);
 
-        <li>
-          برنده هر راند یک کارت امتیاز می‌گیرد.
-        </li>
+      background-size:
+        90px 90px,
+        120px 120px,
+        150px 150px;
 
-        <li>
-          بعد از هر راند هر دو نفر به انتهای صف تیم خودشان می‌روند.
-        </li>
+      background-position:
+        0 0,
+        30px 20px,
+        60px 50px;
+    }
 
-        <li>
-          در چالش حذفی، جواب تکراری، اشتباه یا مکث بیشتر از ۵ ثانیه = باخت.
-        </li>
+    .birthday-badge {
+      position: relative;
+      display: inline-block;
+      background: #ffd166;
+      color: #111827;
+      padding: 8px 17px;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
 
-        <li>
-          در پانتومیم صحبت کردن ممنوع است.
-        </li>
+    .birthday-hero h1 {
+      position: relative;
+      margin: 0;
+      font-size: clamp(36px, 7vw, 75px);
+      line-height: 1.3;
+    }
 
-        <li>
-          در توضیح کلمه، بازیکن ۳۰ ثانیه وقت دارد.
-        </li>
+    .birthday-hero h1 span {
+      color: #ffd166;
+    }
 
-        <li>
-          کارت معمولی = ۱ امتیاز<br>
-          آس = ۲ امتیاز<br>
-          ❤️ آس دل = ۵ امتیاز
-        </li>
+    .birthday-hero p {
+      position: relative;
+      color: #c9d3e4;
+      font-size: 18px;
+      margin: 12px auto 0;
+      max-width: 700px;
+    }
 
-        <li>
-          اولین کسی که آس دل ❤️ را پیدا کند، یک Cheers به سلامتی آرین داریم.
-          نوشیدن اختیاری است.
-        </li>
+    .photo-strip {
+      width: min(1150px, 94%);
+      margin: 0 auto 35px;
 
-        <li>
-          در امتیازهای ۱۰، ۲۰ و ۳۰ می‌توان Party Break داشت.
-        </li>
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
 
-        <li>
-          در پایان، تیمی که بیشترین امتیاز را داشته باشد برنده است.
-        </li>
-      </ol>
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      aspect-ratio: 1 / 1;
+      border: 2px solid rgba(255,255,255,.14);
+      background: #162033;
+    }
+
+    .photo:nth-child(odd) {
+      transform: rotate(-2deg);
+    }
+
+    .photo:nth-child(even) {
+      transform: rotate(2deg);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-label {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+
+      padding: 7px;
+      border-radius: 12px;
+
+      background: rgba(0,0,0,.58);
+      backdrop-filter: blur(5px);
+
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .rules-wrapper {
+      width: min(950px, 92%);
+      margin: auto;
+      padding-bottom: 60px;
+    }
+
+    .rules-card {
+      background: rgba(18, 27, 44, .93);
+      border: 1px solid #34435e;
+      border-radius: 28px;
+      padding: 30px;
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.35);
+    }
+
+    .rules-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .rules-title h2 {
+      margin: 0;
+      color: #ffd166;
+      font-size: 32px;
+    }
+
+    .rules-title p {
+      color: #98a7bd;
+      margin-bottom: 0;
+    }
+
+    .rules-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .rule {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 13px;
+      align-items: start;
+
+      padding: 15px;
+      border-radius: 18px;
+
+      background: #0d1524;
+      border: 1px solid #263551;
+    }
+
+    .rule-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      background: #ffd166;
+      color: #111;
+      font-weight: bold;
+    }
+
+    .rule-text {
+      line-height: 2;
+      color: #e3e9f2;
+    }
+
+    .rule-text strong {
+      color: #ffd166;
+    }
+
+    .score-box {
+      margin-top: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: #18243a;
+      line-height: 2;
+    }
+
+    .enter-area {
+      text-align: center;
+      margin-top: 35px;
+    }
+
+    .enter-btn {
+      border: none;
+      border-radius: 18px;
+      padding: 18px 50px;
+
+      background: linear-gradient(135deg, #ffd166, #f4b942);
+      color: #111;
+
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+
+      box-shadow: 0 12px 35px rgba(255, 209, 102, .2);
+      transition: .2s;
+    }
+
+    .enter-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .arian-note {
+      margin-top: 15px;
+      color: #8997ac;
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       MAIN GAME
+    ========================= */
+
+    #gamePage {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+      padding: 35px 0 70px;
+    }
+
+    .game-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .game-header h1 {
+      margin-bottom: 8px;
+      font-size: 38px;
+    }
+
+    .game-header p {
+      color: #91a0b6;
+    }
+
+    .back-btn {
+      border: 1px solid #43516a;
+      background: #121b2c;
+      color: #fff;
+      border-radius: 12px;
+      padding: 10px 18px;
+      cursor: pointer;
+      margin-bottom: 25px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+
+    .category-btn {
+      min-height: 65px;
+      border: 1px solid #33425e;
+      border-radius: 15px;
+      padding: 12px;
+
+      background: #121b2c;
+      color: white;
+
+      cursor: pointer;
+      font-size: 15px;
+      transition: .2s;
+    }
+
+    .category-btn:hover {
+      transform: translateY(-2px);
+      border-color: #ffd166;
+    }
+
+    .category-btn.active {
+      background: #ffd166;
+      color: #111;
+      border-color: #ffd166;
+      font-weight: bold;
+    }
+
+    .game-area {
+      display: none;
+    }
+
+    .category-name {
+      text-align: center;
+      color: #ffd166;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .question-card {
+      max-width: 760px;
+      min-height: 320px;
+      margin: auto;
+      padding: 42px 35px;
+
+      border-radius: 25px;
+
+      background: linear-gradient(145deg, #192438, #0c1320);
+      border: 2px solid #ffd166;
+
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .hint {
+      color: #8491a8;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    #question {
+      font-size: 28px;
+      line-height: 1.8;
+      font-weight: bold;
+    }
+
+    #answer {
+      display: none;
+
+      width: 100%;
+      margin-top: 30px;
+      padding-top: 25px;
+
+      border-top: 1px solid #33425e;
+
+      color: #80e8aa;
+      font-size: 24px;
+      line-height: 1.8;
+      font-weight: bold;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    #nextBtn {
+      border: none;
+      border-radius: 14px;
+      padding: 15px 45px;
+
+      background: #ffd166;
+      color: #111;
+
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .counter {
+      text-align: center;
+      color: #8390a5;
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+
+      .photo-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .photo-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .photo:nth-child(n) {
+        transform: none;
+      }
+
+      .rules-card {
+        padding: 18px;
+      }
+
+      .rule {
+        grid-template-columns: 38px 1fr;
+        padding: 12px;
+      }
+
+      .rule-number {
+        width: 36px;
+        height: 36px;
+      }
+
+      .rule-text {
+        font-size: 14px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      #question {
+        font-size: 22px;
+      }
+
+      #answer {
+        font-size: 20px;
+      }
+
+      .question-card {
+        min-height: 270px;
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<!-- =====================================
+     FIRST PAGE
+===================================== -->
+
+<section id="introPage">
+
+  <div class="birthday-hero">
+
+    <div class="confetti"></div>
+
+    <div class="birthday-badge">
+      🎂 Birthday Quiz Night
+    </div>
+
+    <h1>
+      تولد <span>آرین</span> مبارک 🎉
+    </h1>
+
+    <p>
+      سوال، رقابت، کارت، شانس و احتمالاً تصمیم‌هایی که فردا ازشون پشیمون می‌شیم 😂
+    </p>
+
+  </div>
+
+
+  <!-- PHOTOS -->
+
+  <div class="photo-strip">
+
+    <div class="photo">
+      <img src="images/arian1.jpg" alt="Arian">
+      <div class="photo-label">🐨 Arian vs Koala</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/arian2.jpg" alt="Arian">
+      <div class="photo-label">😎 Quiz Master</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/arian3.jpg" alt="Arian">
+      <div class="photo-label">🇫🇷 International Arian</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/arian4.jpg" alt="Arian">
+      <div class="photo-label">🌳 Nature Edition</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/arian5.jpg" alt="Arian">
+      <div class="photo-label">🕶️ Serious Business</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/arian6.jpg" alt="Arian">
+      <div class="photo-label">👑 Birthday Boss</div>
     </div>
 
   </div>
 
 
-  <!-- LOGIN -->
-  <div id="loginBox" class="login-box">
+  <!-- RULES -->
 
-    <h2>🔐 ورود به بازی</h2>
+  <div class="rules-wrapper">
 
-    <input
-      type="password"
-      id="passwordInput"
-      placeholder="رمز را وارد کنید"
-      autocomplete="off"
-    >
+    <div class="rules-card">
 
-    <button id="loginBtn">
-      ورود
-    </button>
+      <div class="rules-title">
+        <h2>📜 قوانین بازی</h2>
+        <p>قبل از شروع، همه حداقل یک بار اینا رو بخونن 😄</p>
+      </div>
 
-    <div id="loginError"></div>
+
+      <div class="rules-list">
+
+        <div class="rule">
+          <div class="rule-number">1</div>
+          <div class="rule-text">
+            اول دخترها و پسرها جدا می‌شن و دو‌به‌دو میان جلو.
+            هر دو نفر یک رقابت خیلی کوتاه و شانسی انجام می‌دن؛ مثل
+            <strong>سنگ‌کاغذقیچی، حدس عدد</strong> و چیزهای مشابه.
+            نتیجه فقط برای تعیین ترتیب برداشتن کارت‌هاست.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">2</div>
+          <div class="rule-text">
+            بعد هر نفر یک کارت برمی‌داره.
+            <strong>رنگ یا علامت کارت</strong>
+            مشخص می‌کنه عضو کدوم تیم می‌شه.
+            وقتی همه کارت گرفتن، تیم‌ها کامل مشخص می‌شن.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">3</div>
+          <div class="rule-text">
+            اعضای هر تیم بر اساس عدد یا رتبه‌ای که بهشون رسیده مرتب می‌شن
+            و صف تشکیل می‌دن.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">4</div>
+          <div class="rule-text">
+            مسابقه اصلی شروع می‌شه.
+            نفر اول هر تیم میاد جلو و با حریفش اول
+            <strong>سنگ‌کاغذقیچی</strong>
+            بازی می‌کنه.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">5</div>
+          <div class="rule-text">
+            برنده‌ی سنگ‌کاغذقیچی حق انتخاب دسته‌بندی رو داره؛
+            مثلاً Geography، History، Sport، Movies، Math، Food،
+            General Knowledge و غیره.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">6</div>
+          <div class="rule-text">
+            بعد سؤال یا چالش همون دسته اجرا می‌شه.
+            هرکس درست جواب بده یا چالش رو ببره،
+            <strong>یک کارت امتیاز</strong>
+            می‌گیره.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">7</div>
+          <div class="rule-text">
+            اگر سؤال معمولی باشه، هر نفر فقط چند ثانیه برای جواب دادن وقت داره.
+            اگر جواب اشتباه بده، فرصت به نفر مقابل می‌رسه.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">8</div>
+          <div class="rule-text">
+            بعد از هر راند، هر دو نفر می‌رن آخر صف تیم خودشون
+            و نفرات بعدی میان جلو.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">9</div>
+          <div class="rule-text">
+            بعضی راندها <strong>حذفی سرعتی</strong> هستن.
+            مثلاً «اسم پسر با B» یا «کشور با M».
+            دو نفر یکی‌درمیون جواب می‌دن.
+            جواب تکراری ممنوعه و هرکس مکث کنه، اشتباه بگه
+            یا چیزی به ذهنش نرسه، می‌بازه.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">10</div>
+          <div class="rule-text">
+            چالش‌هایی مثل <strong>Pantomime</strong> و
+            <strong>Explain the Word</strong> قانون جدا دارن.
+            در Pantomime باید بدون حرف زدن اجرا کنن.
+            در Explain the Word حدود ۳۰ ثانیه وقت دارن تا
+            هرچند کلمه که می‌تونن توضیح بدن.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">11</div>
+          <div class="rule-text">
+
+            <strong>امتیاز کارت‌ها:</strong>
+
+            <div class="score-box">
+              🃏 کارت معمولی = <strong>۱ امتیاز</strong><br>
+              🅰️ آس = <strong>۲ امتیاز</strong><br>
+              ❤️ A♥ آس دل = <strong>۵ امتیاز</strong>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">12</div>
+          <div class="rule-text">
+            اولین کسی که <strong>آس دل ❤️</strong> رو پیدا کنه،
+            بازی برای یک لحظه متوقف می‌شه و همه به سلامتی
+            <strong>آرین</strong>
+            Cheers می‌کنن؛ نوشیدنی برای هرکس اختیاریه.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">13</div>
+          <div class="rule-text">
+            برای رسیدن تیم‌ها به امتیازهای مشخص مثل
+            <strong>۱۰، ۲۰ و ۳۰</strong>
+            می‌تونید یک Party Break داشته باشید.
+          </div>
+        </div>
+
+
+        <div class="rule">
+          <div class="rule-number">14</div>
+          <div class="rule-text">
+            بازی تا وقتی ادامه پیدا می‌کنه که کارت‌های امتیاز
+            یا سؤال‌های تعیین‌شده تموم بشن.
+            در پایان امتیاز کارت‌های هر تیم جمع می‌شه و تیمی که
+            <strong>بیشترین امتیاز</strong>
+            رو داشته باشه برنده است.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="enter-area">
+
+        <button id="enterGameBtn" class="enter-btn">
+          🎮 ورود به بازی
+        </button>
+
+        <div class="arian-note">
+          Same Arian • More Cake • More Chaos 🎂
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
+</section>
 
-  <!-- خود بازی -->
-  <div id="mainGame" style="display:none;">
 
-    <div class="subtitle">
-      دسته‌بندی را انتخاب کن
+
+<!-- =====================================
+     GAME PAGE
+===================================== -->
+
+<section id="gamePage">
+
+  <div class="container">
+
+    <button id="backBtn" class="back-btn">
+      ← برگشت به قوانین
+    </button>
+
+    <div class="game-header">
+      <h1>🎴 Arian's Birthday Quiz</h1>
+      <p>دسته‌بندی رو انتخاب کن</p>
     </div>
+
 
     <div class="categories" id="categories"></div>
+
 
     <div class="game-area" id="gameArea">
 
       <div class="category-name" id="categoryName"></div>
 
+
       <div class="question-card" id="questionCard">
 
         <div class="hint">
-          برای دیدن جواب روی کارت کلیک کن
+          👆 برای دیدن جواب روی کارت کلیک کن
         </div>
 
         <div id="question"></div>
@@ -134,10 +767,13 @@
 
       </div>
 
+
       <div class="controls">
+
         <button id="nextBtn">
           Next ➜
         </button>
+
       </div>
 
       <div class="counter" id="counter"></div>
@@ -146,4 +782,694 @@
 
   </div>
 
-</div>
+</section>
+
+
+
+<script>
+
+/* =====================================
+   PAGE NAVIGATION
+===================================== */
+
+const introPage = document.getElementById("introPage");
+const gamePage = document.getElementById("gamePage");
+
+const enterGameBtn = document.getElementById("enterGameBtn");
+const backBtn = document.getElementById("backBtn");
+
+
+enterGameBtn.addEventListener("click", () => {
+
+  introPage.style.display = "none";
+  gamePage.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+});
+
+
+backBtn.addEventListener("click", () => {
+
+  gamePage.style.display = "none";
+  introPage.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+});
+
+
+
+/* =====================================
+   QUIZ DATA
+===================================== */
+
+const quizData = {
+
+  "🎲 تیم‌کشی": [
+
+    {
+      type: "normal",
+      q: "✊ ✋ ✌️ سنگ، کاغذ، قیچی",
+      a: "بهترین از ۳ دست؛ برنده زودتر کارت تیم‌بندی را برمی‌دارد."
+    },
+
+    {
+      type: "number20",
+      q: "🔢 هر دو نفر یک عدد بین ۱ تا ۲۰ انتخاب کنید.",
+      a: ""
+    },
+
+    {
+      type: "coin",
+      q: "🪙 شیر یا خط؟ هر نفر یکی را انتخاب کند.",
+      a: ""
+    },
+
+    {
+      type: "hand",
+      q: "✋ دست راست یا چپ؟ هر نفر یکی را انتخاب کند.",
+      a: ""
+    },
+
+    {
+      type: "color",
+      q: "🔴 ⚫ قرمز یا مشکی؟ هر نفر یکی را انتخاب کند.",
+      a: ""
+    },
+
+    {
+      type: "evenodd",
+      q: "🔢 زوج یا فرد؟ هر نفر یکی را انتخاب کند.",
+      a: ""
+    },
+
+    {
+      type: "direction",
+      q: "⬅️ ➡️ چپ یا راست؟ هر نفر یکی را انتخاب کند.",
+      a: ""
+    }
+
+  ],
+
+
+  "🌍 جغرافیا": [
+
+    {
+      q: "پایتخت کانادا چیست؟",
+      a: "اتاوا"
+    },
+
+    {
+      q: "بزرگ‌ترین کشور جهان از نظر مساحت چیست؟",
+      a: "روسیه"
+    },
+
+    {
+      q: "پایتخت استرالیا چیست؟",
+      a: "کانبرا"
+    },
+
+    {
+      q: "کوه فوجی در کدام کشور قرار دارد؟",
+      a: "ژاپن"
+    },
+
+    {
+      q: "رود آمازون در کدام قاره قرار دارد؟",
+      a: "آمریکای جنوبی"
+    },
+
+    {
+      q: "پایتخت نیوزیلند چیست؟",
+      a: "ولینگتون"
+    }
+
+  ],
+
+
+  "🏛️ تاریخ": [
+
+    {
+      q: "جنگ جهانی دوم در چه سالی تمام شد؟",
+      a: "1945"
+    },
+
+    {
+      q: "اولین انسان روی ماه چه کسی بود؟",
+      a: "Neil Armstrong"
+    },
+
+    {
+      q: "دیوار برلین در چه سالی فرو ریخت؟",
+      a: "1989"
+    },
+
+    {
+      q: "کشتی Titanic در چه سالی غرق شد؟",
+      a: "1912"
+    },
+
+    {
+      q: "ناپلئون رهبر کدام کشور بود؟",
+      a: "فرانسه"
+    },
+
+    {
+      q: "اهرام جیزه متعلق به کدام تمدن هستند؟",
+      a: "مصر باستان"
+    }
+
+  ],
+
+
+  "🔬 علم و دانش": [
+
+    {
+      q: "بزرگ‌ترین سیاره منظومه شمسی چیست؟",
+      a: "مشتری"
+    },
+
+    {
+      q: "نماد شیمیایی طلا چیست؟",
+      a: "Au"
+    },
+
+    {
+      q: "نزدیک‌ترین سیاره به خورشید چیست؟",
+      a: "عطارد"
+    },
+
+    {
+      q: "بدن انسان بالغ معمولاً چند استخوان دارد؟",
+      a: "206"
+    },
+
+    {
+      q: "بیشترین گاز موجود در جو زمین چیست؟",
+      a: "نیتروژن"
+    },
+
+    {
+      q: "سرعت نور تقریباً چند کیلومتر در ثانیه است؟",
+      a: "حدود 300,000 کیلومتر در ثانیه"
+    }
+
+  ],
+
+
+  "⚽ ورزش": [
+
+    {
+      q: "هر تیم فوتبال چند بازیکن داخل زمین دارد؟",
+      a: "11"
+    },
+
+    {
+      q: "Wimbledon مربوط به چه ورزشی است؟",
+      a: "تنیس"
+    },
+
+    {
+      q: "پرتاب آزاد در بسکتبال چند امتیاز دارد؟",
+      a: "1"
+    },
+
+    {
+      q: "Usain Bolt در چه رشته‌ای معروف است؟",
+      a: "دو سرعت"
+    },
+
+    {
+      q: "جام جهانی فوتبال هر چند سال برگزار می‌شود؟",
+      a: "4 سال"
+    },
+
+    {
+      q: "هر تیم والیبال چند بازیکن داخل زمین دارد؟",
+      a: "6"
+    }
+
+  ],
+
+
+  "🎬 فیلم و سریال": [
+
+    {
+      q: "کارگردان Titanic چه کسی است؟",
+      a: "James Cameron"
+    },
+
+    {
+      q: "مدرسه Harry Potter چه نام دارد؟",
+      a: "Hogwarts"
+    },
+
+    {
+      q: "بازیگر نقش Iron Man کیست؟",
+      a: "Robert Downey Jr."
+    },
+
+    {
+      q: "شخصیت اصلی Pirates of the Caribbean چه نام دارد؟",
+      a: "Jack Sparrow"
+    },
+
+    {
+      q: "در سریال Friends خواهر Ross چه نام دارد؟",
+      a: "Monica"
+    },
+
+    {
+      q: "Joker دشمن معروف کدام ابرقهرمان است؟",
+      a: "Batman"
+    }
+
+  ],
+
+
+  "➗ ریاضی": [
+
+    {
+      q: "12 × 8 چند می‌شود؟",
+      a: "96"
+    },
+
+    {
+      q: "15 درصد 200 چند است؟",
+      a: "30"
+    },
+
+    {
+      q: "نصف 350 چند است؟",
+      a: "175"
+    },
+
+    {
+      q: "اگر 5x = 45 باشد، x چند است؟",
+      a: "9"
+    },
+
+    {
+      q: "عدد بعدی چیست؟ 2، 4، 8، 16، ...",
+      a: "32"
+    },
+
+    {
+      q: "دو زاویه یک مثلث 50 و 60 درجه‌اند. زاویه سوم چند است؟",
+      a: "70 درجه"
+    }
+
+  ],
+
+
+  "🎨 هنر": [
+
+    {
+      q: "Mona Lisa اثر چه کسی است؟",
+      a: "Leonardo da Vinci"
+    },
+
+    {
+      q: "Starry Night اثر چه کسی است؟",
+      a: "Vincent van Gogh"
+    },
+
+    {
+      q: "Picasso بیشتر با چه سبک هنری شناخته می‌شود؟",
+      a: "Cubism"
+    },
+
+    {
+      q: "مجسمه David اثر چه کسی است؟",
+      a: "Michelangelo"
+    },
+
+    {
+      q: "The Scream اثر چه کسی است؟",
+      a: "Edvard Munch"
+    },
+
+    {
+      q: "Salvador Dalí بیشتر با چه سبک هنری شناخته می‌شود؟",
+      a: "Surrealism"
+    }
+
+  ],
+
+
+  "🍕 غذا": [
+
+    {
+      q: "Sushi متعلق به کدام کشور است؟",
+      a: "ژاپن"
+    },
+
+    {
+      q: "ماده اصلی Guacamole چیست؟",
+      a: "آووکادو"
+    },
+
+    {
+      q: "Pizza اصالتاً متعلق به کدام کشور است؟",
+      a: "ایتالیا"
+    },
+
+    {
+      q: "Hummus عمدتاً از چه ماده‌ای درست می‌شود؟",
+      a: "نخود"
+    },
+
+    {
+      q: "Paella غذای معروف کدام کشور است؟",
+      a: "اسپانیا"
+    },
+
+    {
+      q: "Tacos بیشتر با آشپزی کدام کشور شناخته می‌شود؟",
+      a: "مکزیک"
+    }
+
+  ],
+
+
+  "🧠 اطلاعات عمومی": [
+
+    {
+      q: "بزرگ‌ترین اقیانوس دنیا چیست؟",
+      a: "اقیانوس آرام"
+    },
+
+    {
+      q: "سریع‌ترین حیوان خشکی چیست؟",
+      a: "یوزپلنگ"
+    },
+
+    {
+      q: "واحد پول ژاپن چیست؟",
+      a: "ین"
+    },
+
+    {
+      q: "سال کبیسه چند روز دارد؟",
+      a: "366"
+    },
+
+    {
+      q: "چند قاره در جهان وجود دارد؟",
+      a: "7"
+    },
+
+    {
+      q: "بزرگ‌ترین پستاندار دنیا چیست؟",
+      a: "نهنگ آبی"
+    }
+
+  ],
+
+
+  "🔥 چالش": [
+
+    {
+      q: "⚡ حذفی: اسم پسر با B — یکی‌درمیون جواب بدید.",
+      a: "مکث، جواب اشتباه یا تکراری = باخت."
+    },
+
+    {
+      q: "⚡ حذفی: اسم کشور — یکی‌درمیون جواب بدید.",
+      a: "مکث یا جواب تکراری = باخت."
+    },
+
+    {
+      q: "⚡ حذفی: برند ماشین — یکی‌درمیون جواب بدید.",
+      a: "ادامه بدید تا یکی کم بیاره."
+    },
+
+    {
+      q: "🎭 پانتومیم: کسی که داخل آسانسور گیر کرده.",
+      a: "بدون صحبت کردن اجرا شود."
+    },
+
+    {
+      q: "🎭 پانتومیم: کسی که غذای خیلی تند خورده.",
+      a: "بدون صحبت کردن اجرا شود."
+    },
+
+    {
+      q: "⚡ در ۵ ثانیه ۳ حیوان دریایی نام ببر.",
+      a: "هر ۳ جواب باید متفاوت و معتبر باشند."
+    },
+
+    {
+      q: "🗣️ در ۳۰ ثانیه توضیح بده: Airport, Banana, Teacher, Bicycle, Coffee",
+      a: "تا جایی که می‌توانید کلمات را توضیح بدهید."
+    }
+
+  ]
+
+};
+
+
+
+/* =====================================
+   QUIZ LOGIC
+===================================== */
+
+let currentCategory = null;
+
+const usedQuestions = {};
+
+const categoriesDiv =
+  document.getElementById("categories");
+
+const gameArea =
+  document.getElementById("gameArea");
+
+const categoryName =
+  document.getElementById("categoryName");
+
+const questionEl =
+  document.getElementById("question");
+
+const answerEl =
+  document.getElementById("answer");
+
+const questionCard =
+  document.getElementById("questionCard");
+
+const nextBtn =
+  document.getElementById("nextBtn");
+
+const counter =
+  document.getElementById("counter");
+
+
+Object.keys(quizData).forEach(category => {
+
+  usedQuestions[category] = [];
+
+  const button =
+    document.createElement("button");
+
+  button.className =
+    "category-btn";
+
+  button.textContent =
+    category;
+
+
+  button.addEventListener("click", () => {
+
+    document
+      .querySelectorAll(".category-btn")
+      .forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+    button.classList.add("active");
+
+    currentCategory = category;
+
+    categoryName.textContent = category;
+
+    gameArea.style.display = "block";
+
+    loadRandomQuestion();
+
+  });
+
+
+  categoriesDiv.appendChild(button);
+
+});
+
+
+
+function generateRandomAnswer(question) {
+
+  switch(question.type) {
+
+    case "number20":
+
+      return "🎯 عدد درست: " +
+        (Math.floor(Math.random() * 20) + 1);
+
+
+    case "coin":
+
+      return Math.random() < 0.5
+        ? "🪙 جواب: شیر"
+        : "🪙 جواب: خط";
+
+
+    case "hand":
+
+      return Math.random() < 0.5
+        ? "✋ جواب: دست راست"
+        : "🤚 جواب: دست چپ";
+
+
+    case "color":
+
+      return Math.random() < 0.5
+        ? "🔴 جواب: قرمز"
+        : "⚫ جواب: مشکی";
+
+
+    case "evenodd":
+
+      return Math.random() < 0.5
+        ? "جواب: زوج"
+        : "جواب: فرد";
+
+
+    case "direction":
+
+      return Math.random() < 0.5
+        ? "⬅️ جواب: چپ"
+        : "➡️ جواب: راست";
+
+
+    default:
+
+      return question.a;
+
+  }
+
+}
+
+
+
+function loadRandomQuestion() {
+
+  if (!currentCategory)
+    return;
+
+
+  const questions =
+    quizData[currentCategory];
+
+
+  if (
+    usedQuestions[currentCategory].length
+    === questions.length
+  ) {
+
+    usedQuestions[currentCategory] = [];
+
+  }
+
+
+  let randomIndex;
+
+
+  do {
+
+    randomIndex =
+      Math.floor(
+        Math.random() * questions.length
+      );
+
+  }
+
+  while (
+    usedQuestions[currentCategory]
+      .includes(randomIndex)
+  );
+
+
+  usedQuestions[currentCategory]
+    .push(randomIndex);
+
+
+  const question =
+    questions[randomIndex];
+
+
+  questionEl.textContent =
+    question.q;
+
+
+  answerEl.textContent =
+    generateRandomAnswer(question);
+
+
+  answerEl.style.display =
+    "none";
+
+
+  updateCounter();
+
+}
+
+
+
+function updateCounter() {
+
+  const total =
+    quizData[currentCategory].length;
+
+  const used =
+    usedQuestions[currentCategory].length;
+
+
+  counter.textContent =
+    `${used} / ${total} مورد استفاده شده`;
+
+}
+
+
+
+questionCard.addEventListener(
+  "click",
+  () => {
+
+    answerEl.style.display =
+      "block";
+
+  }
+);
+
+
+
+nextBtn.addEventListener(
+  "click",
+  (event) => {
+
+    event.stopPropagation();
+
+    loadRandomQuestion();
+
+  }
+);
+
+</script>
+
+</body>
+</html>
