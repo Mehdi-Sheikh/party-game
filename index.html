@@ -24,7 +24,8 @@
       color: white;
     }
 
-    button {
+    button,
+    input {
       font-family: inherit;
     }
 
@@ -228,29 +229,60 @@
       line-height: 2;
     }
 
-    .enter-area {
-      text-align: center;
+    /* =========================
+       LOGIN
+    ========================= */
+
+    .login-box {
       margin-top: 35px;
+      padding: 25px;
+      border-radius: 20px;
+      background: #0d1524;
+      border: 1px solid #2e3d58;
+      text-align: center;
     }
 
-    .enter-btn {
+    .login-box h3 {
+      margin-top: 0;
+      color: #ffd166;
+      font-size: 24px;
+    }
+
+    .login-input {
+      width: min(360px, 100%);
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid #3c4b67;
+      background: #121b2c;
+      color: white;
+      font-size: 16px;
+      outline: none;
+      text-align: center;
+    }
+
+    .login-input:focus {
+      border-color: #ffd166;
+    }
+
+    .login-btn {
+      margin-top: 12px;
       border: none;
-      border-radius: 18px;
-      padding: 18px 50px;
+      border-radius: 14px;
+      padding: 14px 34px;
 
       background: linear-gradient(135deg, #ffd166, #f4b942);
       color: #111;
 
-      font-size: 20px;
+      font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-
-      box-shadow: 0 12px 35px rgba(255, 209, 102, .2);
-      transition: .2s;
     }
 
-    .enter-btn:hover {
-      transform: translateY(-2px) scale(1.02);
+    .login-error {
+      margin-top: 10px;
+      min-height: 20px;
+      color: #ff8b8b;
+      font-size: 14px;
     }
 
     .arian-note {
@@ -258,7 +290,6 @@
       color: #8997ac;
       font-size: 13px;
     }
-
 
     /* =========================
        MAIN GAME
@@ -420,14 +451,12 @@
     }
 
     @media (max-width: 850px) {
-
       .photo-strip {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
     @media (max-width: 600px) {
-
       .photo-strip {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -507,32 +536,32 @@
   <div class="photo-strip">
 
     <div class="photo">
-      <img src="images/arian1.jpg" alt="Arian">
+      <img src="arian1.jpg" alt="Arian">
       <div class="photo-label">🐨 Arian vs Koala</div>
     </div>
 
     <div class="photo">
-      <img src="images/arian2.jpg" alt="Arian">
+      <img src="arian2.jpg" alt="Arian">
       <div class="photo-label">😎 Quiz Master</div>
     </div>
 
     <div class="photo">
-      <img src="images/arian3.jpg" alt="Arian">
+      <img src="arian3.jpg" alt="Arian">
       <div class="photo-label">🇫🇷 International Arian</div>
     </div>
 
     <div class="photo">
-      <img src="images/arian4.jpg" alt="Arian">
+      <img src="arian4.jpg" alt="Arian">
       <div class="photo-label">🌳 Nature Edition</div>
     </div>
 
     <div class="photo">
-      <img src="images/arian5.jpg" alt="Arian">
+      <img src="arian5.jpg" alt="Arian">
       <div class="photo-label">🕶️ Serious Business</div>
     </div>
 
     <div class="photo">
-      <img src="images/arian6.jpg" alt="Arian">
+      <img src="arian6.jpg" alt="Arian">
       <div class="photo-label">👑 Birthday Boss</div>
     </div>
 
@@ -563,7 +592,6 @@
           </div>
         </div>
 
-
         <div class="rule">
           <div class="rule-number">2</div>
           <div class="rule-text">
@@ -574,7 +602,6 @@
           </div>
         </div>
 
-
         <div class="rule">
           <div class="rule-number">3</div>
           <div class="rule-text">
@@ -582,7 +609,6 @@
             و صف تشکیل می‌دن.
           </div>
         </div>
-
 
         <div class="rule">
           <div class="rule-number">4</div>
@@ -594,7 +620,6 @@
           </div>
         </div>
 
-
         <div class="rule">
           <div class="rule-number">5</div>
           <div class="rule-text">
@@ -603,7 +628,6 @@
             General Knowledge و غیره.
           </div>
         </div>
-
 
         <div class="rule">
           <div class="rule-number">6</div>
@@ -615,7 +639,6 @@
           </div>
         </div>
 
-
         <div class="rule">
           <div class="rule-number">7</div>
           <div class="rule-text">
@@ -624,7 +647,6 @@
           </div>
         </div>
 
-
         <div class="rule">
           <div class="rule-number">8</div>
           <div class="rule-text">
@@ -632,7 +654,6 @@
             و نفرات بعدی میان جلو.
           </div>
         </div>
-
 
         <div class="rule">
           <div class="rule-number">9</div>
@@ -645,7 +666,6 @@
           </div>
         </div>
 
-
         <div class="rule">
           <div class="rule-number">10</div>
           <div class="rule-text">
@@ -656,7 +676,6 @@
             هرچند کلمه که می‌تونن توضیح بدن.
           </div>
         </div>
-
 
         <div class="rule">
           <div class="rule-number">11</div>
@@ -673,17 +692,15 @@
           </div>
         </div>
 
-
         <div class="rule">
           <div class="rule-number">12</div>
           <div class="rule-text">
             اولین کسی که <strong>آس دل ❤️</strong> رو پیدا کنه،
             بازی برای یک لحظه متوقف می‌شه و همه به سلامتی
             <strong>آرین</strong>
-            Cheers می‌کنن؛ نوشیدنی برای هرکس اختیاریه.
+            Cheers می‌کنن؛ هرکس خواست شات یا نوشیدنی دلخواهش رو می‌خوره.
           </div>
         </div>
-
 
         <div class="rule">
           <div class="rule-number">13</div>
@@ -693,7 +710,6 @@
             می‌تونید یک Party Break داشته باشید.
           </div>
         </div>
-
 
         <div class="rule">
           <div class="rule-number">14</div>
@@ -709,11 +725,27 @@
       </div>
 
 
-      <div class="enter-area">
+      <!-- LOGIN -->
 
-        <button id="enterGameBtn" class="enter-btn">
+      <div class="login-box">
+
+        <h3>🔐 ورود به بازی</h3>
+
+        <input
+          id="passwordInput"
+          class="login-input"
+          type="password"
+          placeholder="رمز ورود"
+          autocomplete="off"
+        >
+
+        <br>
+
+        <button id="loginBtn" class="login-btn">
           🎮 ورود به بازی
         </button>
+
+        <div id="loginError" class="login-error"></div>
 
         <div class="arian-note">
           Same Arian • More Cake • More Chaos 🎂
@@ -789,25 +821,55 @@
 <script>
 
 /* =====================================
-   PAGE NAVIGATION
+   LOGIN
 ===================================== */
+
+const correctPassword = "nimru";
 
 const introPage = document.getElementById("introPage");
 const gamePage = document.getElementById("gamePage");
 
-const enterGameBtn = document.getElementById("enterGameBtn");
+const passwordInput = document.getElementById("passwordInput");
+const loginBtn = document.getElementById("loginBtn");
+const loginError = document.getElementById("loginError");
+
 const backBtn = document.getElementById("backBtn");
 
 
-enterGameBtn.addEventListener("click", () => {
+function tryLogin() {
 
-  introPage.style.display = "none";
-  gamePage.style.display = "block";
+  if (passwordInput.value === correctPassword) {
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+    loginError.textContent = "";
+
+    introPage.style.display = "none";
+    gamePage.style.display = "block";
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  } else {
+
+    loginError.textContent = "رمز اشتباهه 😄";
+
+    passwordInput.value = "";
+    passwordInput.focus();
+
+  }
+
+}
+
+
+loginBtn.addEventListener("click", tryLogin);
+
+
+passwordInput.addEventListener("keydown", function(event) {
+
+  if (event.key === "Enter") {
+    tryLogin();
+  }
 
 });
 
@@ -816,6 +878,8 @@ backBtn.addEventListener("click", () => {
 
   gamePage.style.display = "none";
   introPage.style.display = "block";
+
+  passwordInput.value = "";
 
   window.scrollTo({
     top: 0,
@@ -881,315 +945,108 @@ const quizData = {
 
   "🌍 جغرافیا": [
 
-    {
-      q: "پایتخت کانادا چیست؟",
-      a: "اتاوا"
-    },
-
-    {
-      q: "بزرگ‌ترین کشور جهان از نظر مساحت چیست؟",
-      a: "روسیه"
-    },
-
-    {
-      q: "پایتخت استرالیا چیست؟",
-      a: "کانبرا"
-    },
-
-    {
-      q: "کوه فوجی در کدام کشور قرار دارد؟",
-      a: "ژاپن"
-    },
-
-    {
-      q: "رود آمازون در کدام قاره قرار دارد؟",
-      a: "آمریکای جنوبی"
-    },
-
-    {
-      q: "پایتخت نیوزیلند چیست؟",
-      a: "ولینگتون"
-    }
+    { q: "پایتخت کانادا چیست؟", a: "اتاوا" },
+    { q: "بزرگ‌ترین کشور جهان از نظر مساحت چیست؟", a: "روسیه" },
+    { q: "پایتخت استرالیا چیست؟", a: "کانبرا" },
+    { q: "کوه فوجی در کدام کشور قرار دارد؟", a: "ژاپن" },
+    { q: "رود آمازون در کدام قاره قرار دارد؟", a: "آمریکای جنوبی" },
+    { q: "پایتخت نیوزیلند چیست؟", a: "ولینگتون" }
 
   ],
 
 
   "🏛️ تاریخ": [
 
-    {
-      q: "جنگ جهانی دوم در چه سالی تمام شد؟",
-      a: "1945"
-    },
-
-    {
-      q: "اولین انسان روی ماه چه کسی بود؟",
-      a: "Neil Armstrong"
-    },
-
-    {
-      q: "دیوار برلین در چه سالی فرو ریخت؟",
-      a: "1989"
-    },
-
-    {
-      q: "کشتی Titanic در چه سالی غرق شد؟",
-      a: "1912"
-    },
-
-    {
-      q: "ناپلئون رهبر کدام کشور بود؟",
-      a: "فرانسه"
-    },
-
-    {
-      q: "اهرام جیزه متعلق به کدام تمدن هستند؟",
-      a: "مصر باستان"
-    }
+    { q: "جنگ جهانی دوم در چه سالی تمام شد؟", a: "1945" },
+    { q: "اولین انسان روی ماه چه کسی بود؟", a: "Neil Armstrong" },
+    { q: "دیوار برلین در چه سالی فرو ریخت؟", a: "1989" },
+    { q: "کشتی Titanic در چه سالی غرق شد؟", a: "1912" },
+    { q: "ناپلئون رهبر کدام کشور بود؟", a: "فرانسه" },
+    { q: "اهرام جیزه متعلق به کدام تمدن هستند؟", a: "مصر باستان" }
 
   ],
 
 
   "🔬 علم و دانش": [
 
-    {
-      q: "بزرگ‌ترین سیاره منظومه شمسی چیست؟",
-      a: "مشتری"
-    },
-
-    {
-      q: "نماد شیمیایی طلا چیست؟",
-      a: "Au"
-    },
-
-    {
-      q: "نزدیک‌ترین سیاره به خورشید چیست؟",
-      a: "عطارد"
-    },
-
-    {
-      q: "بدن انسان بالغ معمولاً چند استخوان دارد؟",
-      a: "206"
-    },
-
-    {
-      q: "بیشترین گاز موجود در جو زمین چیست؟",
-      a: "نیتروژن"
-    },
-
-    {
-      q: "سرعت نور تقریباً چند کیلومتر در ثانیه است؟",
-      a: "حدود 300,000 کیلومتر در ثانیه"
-    }
+    { q: "بزرگ‌ترین سیاره منظومه شمسی چیست؟", a: "مشتری" },
+    { q: "نماد شیمیایی طلا چیست؟", a: "Au" },
+    { q: "نزدیک‌ترین سیاره به خورشید چیست؟", a: "عطارد" },
+    { q: "بدن انسان بالغ معمولاً چند استخوان دارد؟", a: "206" },
+    { q: "بیشترین گاز موجود در جو زمین چیست؟", a: "نیتروژن" },
+    { q: "سرعت نور تقریباً چند کیلومتر در ثانیه است؟", a: "حدود 300,000 کیلومتر در ثانیه" }
 
   ],
 
 
   "⚽ ورزش": [
 
-    {
-      q: "هر تیم فوتبال چند بازیکن داخل زمین دارد؟",
-      a: "11"
-    },
-
-    {
-      q: "Wimbledon مربوط به چه ورزشی است؟",
-      a: "تنیس"
-    },
-
-    {
-      q: "پرتاب آزاد در بسکتبال چند امتیاز دارد؟",
-      a: "1"
-    },
-
-    {
-      q: "Usain Bolt در چه رشته‌ای معروف است؟",
-      a: "دو سرعت"
-    },
-
-    {
-      q: "جام جهانی فوتبال هر چند سال برگزار می‌شود؟",
-      a: "4 سال"
-    },
-
-    {
-      q: "هر تیم والیبال چند بازیکن داخل زمین دارد؟",
-      a: "6"
-    }
+    { q: "هر تیم فوتبال چند بازیکن داخل زمین دارد؟", a: "11" },
+    { q: "Wimbledon مربوط به چه ورزشی است؟", a: "تنیس" },
+    { q: "پرتاب آزاد در بسکتبال چند امتیاز دارد؟", a: "1" },
+    { q: "Usain Bolt در چه رشته‌ای معروف است؟", a: "دو سرعت" },
+    { q: "جام جهانی فوتبال هر چند سال برگزار می‌شود؟", a: "4 سال" },
+    { q: "هر تیم والیبال چند بازیکن داخل زمین دارد؟", a: "6" }
 
   ],
 
 
   "🎬 فیلم و سریال": [
 
-    {
-      q: "کارگردان Titanic چه کسی است؟",
-      a: "James Cameron"
-    },
-
-    {
-      q: "مدرسه Harry Potter چه نام دارد؟",
-      a: "Hogwarts"
-    },
-
-    {
-      q: "بازیگر نقش Iron Man کیست؟",
-      a: "Robert Downey Jr."
-    },
-
-    {
-      q: "شخصیت اصلی Pirates of the Caribbean چه نام دارد؟",
-      a: "Jack Sparrow"
-    },
-
-    {
-      q: "در سریال Friends خواهر Ross چه نام دارد؟",
-      a: "Monica"
-    },
-
-    {
-      q: "Joker دشمن معروف کدام ابرقهرمان است؟",
-      a: "Batman"
-    }
+    { q: "کارگردان Titanic چه کسی است؟", a: "James Cameron" },
+    { q: "مدرسه Harry Potter چه نام دارد؟", a: "Hogwarts" },
+    { q: "بازیگر نقش Iron Man کیست؟", a: "Robert Downey Jr." },
+    { q: "شخصیت اصلی Pirates of the Caribbean چه نام دارد؟", a: "Jack Sparrow" },
+    { q: "در سریال Friends خواهر Ross چه نام دارد؟", a: "Monica" },
+    { q: "Joker دشمن معروف کدام ابرقهرمان است؟", a: "Batman" }
 
   ],
 
 
   "➗ ریاضی": [
 
-    {
-      q: "12 × 8 چند می‌شود؟",
-      a: "96"
-    },
-
-    {
-      q: "15 درصد 200 چند است؟",
-      a: "30"
-    },
-
-    {
-      q: "نصف 350 چند است؟",
-      a: "175"
-    },
-
-    {
-      q: "اگر 5x = 45 باشد، x چند است؟",
-      a: "9"
-    },
-
-    {
-      q: "عدد بعدی چیست؟ 2، 4، 8، 16، ...",
-      a: "32"
-    },
-
-    {
-      q: "دو زاویه یک مثلث 50 و 60 درجه‌اند. زاویه سوم چند است؟",
-      a: "70 درجه"
-    }
+    { q: "12 × 8 چند می‌شود؟", a: "96" },
+    { q: "15 درصد 200 چند است؟", a: "30" },
+    { q: "نصف 350 چند است؟", a: "175" },
+    { q: "اگر 5x = 45 باشد، x چند است؟", a: "9" },
+    { q: "عدد بعدی چیست؟ 2، 4، 8، 16، ...", a: "32" },
+    { q: "دو زاویه یک مثلث 50 و 60 درجه‌اند. زاویه سوم چند است؟", a: "70 درجه" }
 
   ],
 
 
   "🎨 هنر": [
 
-    {
-      q: "Mona Lisa اثر چه کسی است؟",
-      a: "Leonardo da Vinci"
-    },
-
-    {
-      q: "Starry Night اثر چه کسی است؟",
-      a: "Vincent van Gogh"
-    },
-
-    {
-      q: "Picasso بیشتر با چه سبک هنری شناخته می‌شود؟",
-      a: "Cubism"
-    },
-
-    {
-      q: "مجسمه David اثر چه کسی است؟",
-      a: "Michelangelo"
-    },
-
-    {
-      q: "The Scream اثر چه کسی است؟",
-      a: "Edvard Munch"
-    },
-
-    {
-      q: "Salvador Dalí بیشتر با چه سبک هنری شناخته می‌شود؟",
-      a: "Surrealism"
-    }
+    { q: "Mona Lisa اثر چه کسی است؟", a: "Leonardo da Vinci" },
+    { q: "Starry Night اثر چه کسی است؟", a: "Vincent van Gogh" },
+    { q: "Picasso بیشتر با چه سبک هنری شناخته می‌شود؟", a: "Cubism" },
+    { q: "مجسمه David اثر چه کسی است؟", a: "Michelangelo" },
+    { q: "The Scream اثر چه کسی است؟", a: "Edvard Munch" },
+    { q: "Salvador Dalí بیشتر با چه سبک هنری شناخته می‌شود؟", a: "Surrealism" }
 
   ],
 
 
   "🍕 غذا": [
 
-    {
-      q: "Sushi متعلق به کدام کشور است؟",
-      a: "ژاپن"
-    },
-
-    {
-      q: "ماده اصلی Guacamole چیست؟",
-      a: "آووکادو"
-    },
-
-    {
-      q: "Pizza اصالتاً متعلق به کدام کشور است؟",
-      a: "ایتالیا"
-    },
-
-    {
-      q: "Hummus عمدتاً از چه ماده‌ای درست می‌شود؟",
-      a: "نخود"
-    },
-
-    {
-      q: "Paella غذای معروف کدام کشور است؟",
-      a: "اسپانیا"
-    },
-
-    {
-      q: "Tacos بیشتر با آشپزی کدام کشور شناخته می‌شود؟",
-      a: "مکزیک"
-    }
+    { q: "Sushi متعلق به کدام کشور است؟", a: "ژاپن" },
+    { q: "ماده اصلی Guacamole چیست؟", a: "آووکادو" },
+    { q: "Pizza اصالتاً متعلق به کدام کشور است؟", a: "ایتالیا" },
+    { q: "Hummus عمدتاً از چه ماده‌ای درست می‌شود؟", a: "نخود" },
+    { q: "Paella غذای معروف کدام کشور است؟", a: "اسپانیا" },
+    { q: "Tacos بیشتر با آشپزی کدام کشور شناخته می‌شود؟", a: "مکزیک" }
 
   ],
 
 
   "🧠 اطلاعات عمومی": [
 
-    {
-      q: "بزرگ‌ترین اقیانوس دنیا چیست؟",
-      a: "اقیانوس آرام"
-    },
-
-    {
-      q: "سریع‌ترین حیوان خشکی چیست؟",
-      a: "یوزپلنگ"
-    },
-
-    {
-      q: "واحد پول ژاپن چیست؟",
-      a: "ین"
-    },
-
-    {
-      q: "سال کبیسه چند روز دارد؟",
-      a: "366"
-    },
-
-    {
-      q: "چند قاره در جهان وجود دارد؟",
-      a: "7"
-    },
-
-    {
-      q: "بزرگ‌ترین پستاندار دنیا چیست؟",
-      a: "نهنگ آبی"
-    }
+    { q: "بزرگ‌ترین اقیانوس دنیا چیست؟", a: "اقیانوس آرام" },
+    { q: "سریع‌ترین حیوان خشکی چیست؟", a: "یوزپلنگ" },
+    { q: "واحد پول ژاپن چیست؟", a: "ین" },
+    { q: "سال کبیسه چند روز دارد؟", a: "366" },
+    { q: "چند قاره در جهان وجود دارد؟", a: "7" },
+    { q: "بزرگ‌ترین پستاندار دنیا چیست؟", a: "نهنگ آبی" }
 
   ],
 
